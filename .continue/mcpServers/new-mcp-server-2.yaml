@@ -74,14 +74,63 @@ mcpServers:
       # - -y
       # - "@itapi-core/mcp-proxmox"
        
+  # - name: git
+  #   type: stdio
+  #   command: wsl
+  #   args:
+  #     - env
+  #     - NODE_OPTIONS=--dns-result-order=ipv4first
+  #     - npx
+  #     - -y
+  #     - "mcp-git"
+      
+  # - name: github
+  #   type: stdio
+    # command: wsl
+    # args:
+    #   - env
+    #   - NODE_OPTIONS=--dns-result-order=ipv4first
+    #   - GITHUB_PERSONAL_ACCESS_TOKEN="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"
+    #   - npx
+    #   - -y
+    #   - "@github/mcp-server"
+    # command: docker
+    # args:
+    #   - env
+    #   - NODE_OPTIONS=--dns-result-order=ipv4first
+    #   - GITHUB_PERSONAL_ACCESS_TOKEN="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"
+    #   - run
+    #   - -i
+    #   - --rm
+    #   - -e
+    #   - GITHUB_PERSONAL_ACCESS_TOKEN
+    #   - ghcr.io/github/github-mcp-server
+
+    
+  # - name: github
+  #   type: streamable-http
+  #   url: https://api.githubcopilot.com/mcp/
+  #   requestOptions:
+  #     headers:
+  #       Authorization: Bearer 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
+  
   - name: git
     type: stdio
     command: wsl
     args:
       - env
       - NODE_OPTIONS=--dns-result-order=ipv4first
+      - GIT_USERNAME=DavidColinBryant@gmail.com
+      - GIT_EMAIL=DavidColinBryant@gmail.com
       - npx
       - -y
-      - "mcp-git"
-      
-
+      - "@cyanheads/git-mcp-server@latest"
+    
+  - name: shell
+    type: stdio
+    command: wsl
+    args:
+      - sh
+      - -c
+      - "export NODE_OPTIONS='--dns-result-order=ipv4first'; export ALLOW_COMMANDS='ls,cat,pwd,grep,find,git,npm,node,ssh,scp,rsync,tar,zip,unzip,sed,awk,cut,tr,sort,wc,head,tail,echo,date'; /home/david/.local/bin/uvx mcp-shell-server"
+    
