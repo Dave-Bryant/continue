@@ -1,0 +1,5 @@
+mcpServers:
+  proxmox:
+    type: stdio
+    command: wsl
+    args: ["npx", "-y", "@maxddev/proxmox-mcp-server"]

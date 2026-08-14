@@ -1,0 +1,12 @@
+name: New MCP server
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: n8n
+    type: streamable-http
+    url: https://wendylouisebryant.duckdns.org/mcp-server/http
+    requestOptions:
+      headers:
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDhlMzg2MS1lNzdjLTQ3YjgtOWI4MC02OWNkNmZlZGMzYTEiLCJpc3MiOiJuOG4iLCJhdWQiOiJtY3Atc2VydmVyLWFwaSIsImp0aSI6Ijk3ZjAwYzIzLTE4NDItNDU3MC05YzI0LWUyMGQ4ZDMwZWUxYSIsImlhdCI6MTc4MzczNjU4NH0.gT9uN3P_5_bcUN3PY6XNVSNBzjB6ChaLQo9EGaozu1I"
+
+      

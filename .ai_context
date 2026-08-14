@@ -1,0 +1,6 @@
+# AI Context Configuration
+PREFERRED_APPROACH=mcp_first
+WORKING_DIRECTORY=~/continue
+KUBERNETES_NODES=7
+LAST_SESSION=$(date)
+EOF

@@ -1,0 +1,87 @@
+name: New MCP server
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: context7
+    type: streamable-http
+    url: https://mcp.context7.com/mcp
+    requestOptions:
+      headers:
+        Authorization: "Bearer ctx7sk-ac7c3c23-9542-414a-b21d-4fbd8b7ee37e"  
+
+  - name: homeassistant
+    type: streamable-http
+    url: http://10.0.0.55:8123/api/mcp
+    requestOptions:
+      headers:
+        Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiI2NTMzM2ZiZjYxMjc0ZjIxYjhjZTZlOWRkZWQwZGE0MyIsImlhdCI6MTc4NTQ3NTY1NSwiZXhwIjoyMTAwODM1NjU1fQ.ZTmA768QlcnFoSjHTijanF-SjheygVpWP7ay7BwK9bg"
+  
+  # - name: shell
+  #   type: stdio
+  #   command: wsl    
+  #   args:
+  #     - bash
+  #     - -lc
+  #     - >
+  #       source ~/.nvm/nvm.sh &&
+  #       exec npx -y mcp-shell-execute
+      # - env
+      # - NODE_OPTIONS=--dns-result-order=ipv4first
+      # - npx
+      # - -y
+      # - "@mako10k/mcp-shell-server"
+
+  
+  - name: filesystem
+    type: stdio
+    command: wsl
+    args:
+      - env
+      - NODE_OPTIONS=--dns-result-order=ipv4first
+      - npx
+      - -y
+      - "@modelcontextprotocol/server-filesystem"
+      - "/home/david"
+
+  - name: brave-search
+    type: stdio
+    command: wsl
+    args:
+      - bash
+      - -lc
+      - >
+        source ~/.nvm/nvm.sh &&
+        export NODE_OPTIONS="--dns-result-order=ipv4first" &&
+        export BRAVE_API_KEY="BSAJAcB9dO-L2dlZtb_H_qYiDirXWwe" &&
+        node -v >&2 &&
+        exec npx -y @brave/brave-search-mcp-server      
+         
+  
+  - name: proxmox
+    type: stdio
+    command: wsl
+    args:
+      - sh
+      - -c
+      - "export PROXMOX_URL='http://10.0.0.71:8006' && export PROXMOX_USER='root@pam' && export PROXMOX_PASSWORD='david23031955' && export NODE_TLS_REJECT_UNAUTHORIZED=0 && export NODE_OPTIONS='--dns-result-order=ipv4first' && npx -y @itapi-core/mcp-proxmox"
+      # - env
+      # - NODE_OPTIONS=--dns-result-order=ipv4first
+      # - NODE_TLS_REJECT_UNAUTHORIZED=0
+      # - PROXMOX_URL=http://10.0.0.71:8006      
+      # - PROXMOX_USER=root@pam
+      # - PROXMOX_PASSWORD=david23031955      
+      # - npx
+      # - -y
+      # - "@itapi-core/mcp-proxmox"
+       
+  - name: git
+    type: stdio
+    command: wsl
+    args:
+      - env
+      - NODE_OPTIONS=--dns-result-order=ipv4first
+      - npx
+      - -y
+      - "mcp-git"
+      
+

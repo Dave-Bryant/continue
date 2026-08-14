@@ -1,0 +1,10 @@
+name: New MCP server
+version: 0.0.1
+schema: v1
+mcpServers:
+  - name: kubernetes
+    type: streamable-http
+    url: https://davidcolinbryant.duckdns.org/k8s-mcp/mcp
+    requestOptions:
+      headers:
+        X-MCP-AUTH: "2f17f6f125fe350d207a672f9eeba03093e1057aa73ebb60dc6e308367e4eb4f"
